@@ -18,11 +18,90 @@ namespace Calculator
         /// <param name="args"></param>
         static void Main(string[] args)
         {
+            // Variable for user chosie
+            int choise;
+
             // Welcome the user to this program
             Console.WriteLine($"Welcome to {ProgramName}!");
 
             // Make a pause in the program
             Console.ReadKey();
+
+            do
+            {
+                // Show the menu and wait for user had make their choise
+                choise = Menu();
+
+                // Check if the user don't choise to end the program
+                if(choise != 99)
+                {
+                    // Create a empty console windows and show the name of this program
+                    Console.Clear();
+                    Console.WriteLine(ProgramName);
+
+                    // Take the user to the math function that the user choise
+                    switch(choise)
+                    {
+                        case 1:
+                            Addition();
+                            break;
+                        case 2:
+                            Subtraction();
+                            break;
+                        case 3:
+                            Divsion();
+                            break;
+                        case 4:
+                            Multiplication();
+                            break;
+                        default:
+                            break;
+                    }
+
+                    // Make a pause in this program
+                    Console.ReadKey();
+                }
+            } while (choise != 99);
+        }
+        /// <summary>
+        /// Show the menu for this program then wait for user make their choise
+        /// </summary>
+        /// <returns>The user choise</returns>
+        static int Menu()
+        {
+            // Variable for user choise
+            int choise;
+
+            // Create a empty console window and show the name of this program
+            Console.Clear();
+            Console.WriteLine(ProgramName);
+
+            // Make a empty row
+            Console.WriteLine();
+
+            // Show a header for this menu
+            ShowAHeader("Menu");
+
+            // Make a empty row
+            Console.WriteLine();
+
+            // Show the menu itself
+            Console.WriteLine("1. Addition");
+            Console.WriteLine("2. Subtraction");
+            Console.WriteLine("3. Division");
+            Console.WriteLine("4. Multiplication");
+
+            Console.WriteLine("99. Quit the program");
+
+            // Make a empty row
+            Console.WriteLine();
+
+            // Ask the user for their choise
+            Console.Write("Make your choise: ");
+            int.TryParse( Console.ReadLine(), out choise);
+
+            // Return the choise
+            return choise;
         }
 
         /// <summary>
